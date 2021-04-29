@@ -9,4 +9,11 @@ public class Point {
     this.y = y;
   }
 
+  public double distance(Point AnotherPoint) {
+    double xx = this.x - AnotherPoint.x;
+    double yy = this.y - AnotherPoint.y;
+    double s = xx * xx + yy * yy;
+    return Math.sqrt(s);
+  }
+
 }
