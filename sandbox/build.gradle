@@ -1,3 +1,12 @@
 apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = "ru.smunbabylon.sandbox.MyFirstProgram"
+repositories {
+    mavenCentral()
+}
+test {
+    useTestNG()
+}
+dependencies{
+    implementation 'org.testng:testng:7.4.0'
+}
