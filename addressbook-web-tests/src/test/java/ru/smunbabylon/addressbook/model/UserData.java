@@ -1,4 +1,4 @@
-package ru.smunbabylon.addressbook;
+package ru.smunbabylon.addressbook.model;
 
 public class UserData {
   private final String name;

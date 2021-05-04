@@ -1,22 +1,21 @@
-package ru.smunbabylon.addressbook;
+package ru.smunbabylon.addressbook.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import ru.smunbabylon.addressbook.appmanager.ApplicationManager;
 
-public class TestBase extends ApplicationManager {
+public class TestBase {
 
-  private WebDriver driver;
+  protected final ApplicationManager app = new ApplicationManager();
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
-    init();
+    app.init();
   }
 
   @AfterClass(alwaysRun = true)
   public void tearDown() throws Exception {
-    stop();
+    app.stop();
   }
 
 }

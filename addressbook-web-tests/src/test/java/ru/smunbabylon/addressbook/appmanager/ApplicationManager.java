@@ -1,17 +1,22 @@
-package ru.smunbabylon.addressbook;
+package ru.smunbabylon.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.smunbabylon.addressbook.model.UserData;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-  private WebDriver driver;
 
-  protected void init() {
+  WebDriver driver;
+
+  private GroupHelper groupHelper;
+
+  public void init() {
     driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    groupHelper = new GroupHelper(driver);
     login("admin", "secret");
   }
 
@@ -25,55 +30,23 @@ public class ApplicationManager {
     driver.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
-  protected void returnToGroupPage() {
-    driver.findElement(By.linkText("group page")).click();
-  }
-
-  protected void submitGroupCreation() {
-    driver.findElement(By.name("submit")).click();
-  }
-
-  protected void fillGroupForm(GroupData groupData) {
-    driver.findElement(By.name("group_name")).click();
-    driver.findElement(By.name("group_name")).clear();
-    driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    driver.findElement(By.name("group_header")).click();
-    driver.findElement(By.name("group_header")).clear();
-    driver.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    driver.findElement(By.name("group_footer")).click();
-    driver.findElement(By.name("group_footer")).clear();
-    driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-  }
-
-  protected void initGroupCreation() {
-    driver.findElement(By.name("new")).click();
-  }
-
-  protected void goToGroupPage() {
+  public void goToGroupPage() {
     driver.findElement(By.linkText("groups")).click();
   }
 
-  protected void stop() {
+  public void stop() {
     driver.quit();
   }
 
-  protected void deleteSelectedGroups() {
-    driver.findElement(By.name("delete")).click();
-  }
-
-  protected void selectGroup() {
-    driver.findElement(By.name("selected[]")).click();
-  }
-
-  protected void goToHomePage() {
+  public void goToHomePage() {
     driver.findElement(By.linkText("home page")).click();
   }
 
-  protected void submitUserForm() {
+  public void submitUserForm() {
     driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 
-  protected void fillUserForm(UserData userData) {
+  public void fillUserForm(UserData userData) {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
     driver.findElement(By.name("firstname")).sendKeys(userData.getName());
@@ -94,7 +67,11 @@ public class ApplicationManager {
     driver.findElement(By.name("email")).sendKeys(userData.getEmail());
   }
 
-  protected void goToUserCreationPage() {
+  public void goToUserCreationPage() {
     driver.findElement(By.linkText("add new")).click();
+  }
+
+  public GroupHelper getGroupHelper() {
+    return groupHelper;
   }
 }

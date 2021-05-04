@@ -1,4 +1,4 @@
-package ru.smunbabylon.addressbook;
+package ru.smunbabylon.addressbook.model;
 
 public class GroupData {
   private final String name;
