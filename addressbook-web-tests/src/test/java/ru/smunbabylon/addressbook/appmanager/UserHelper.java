@@ -22,4 +22,12 @@ public class UserHelper extends HelperBase{
     type(By.name("home"), userData.getHomePhone());
     type(By.name("email"), userData.getEmail());
   }
+
+  public void initUserModification() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void submitUserModification() {
+    click(By.name("update"));
+  }
 }
