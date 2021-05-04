@@ -30,4 +30,12 @@ public class UserHelper extends HelperBase{
   public void submitUserModification() {
     click(By.name("update"));
   }
+
+  public void selectUser() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedUsers() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
 }

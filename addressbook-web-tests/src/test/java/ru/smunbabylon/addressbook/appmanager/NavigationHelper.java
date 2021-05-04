@@ -20,4 +20,12 @@ public class NavigationHelper extends HelperBase {
   public void goToUserCreationPage() {
     click(By.linkText("add new"));
   }
+
+  public void popupConfirm() {
+    driver.switchTo().alert().accept();
+  }
+
+  public void goHome() {
+    click(By.linkText("home"));
+  }
 }
