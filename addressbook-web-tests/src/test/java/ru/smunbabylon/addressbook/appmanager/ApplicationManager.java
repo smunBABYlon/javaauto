@@ -28,10 +28,6 @@ public class ApplicationManager {
     driver.quit();
   }
 
-  public void goToHomePage() {
-    driver.findElement(By.linkText("home page")).click();
-  }
-
   public void submitUserForm() {
     driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
