@@ -11,12 +11,14 @@ public class ApplicationManager {
 
   WebDriver driver;
 
+  private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
 
   public void init() {
     driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     groupHelper = new GroupHelper(driver);
+    navigationHelper = new NavigationHelper(driver);
     login("admin", "secret");
   }
 
@@ -28,10 +30,6 @@ public class ApplicationManager {
     driver.findElement(By.name("pass")).clear();
     driver.findElement(By.name("pass")).sendKeys(password);
     driver.findElement(By.xpath("//input[@value='Login']")).click();
-  }
-
-  public void goToGroupPage() {
-    driver.findElement(By.linkText("groups")).click();
   }
 
   public void stop() {
@@ -73,5 +71,9 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }
